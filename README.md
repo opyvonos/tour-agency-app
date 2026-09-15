@@ -1,77 +1,76 @@
-# Інформаційно-пошукова система для туристичної фірми
+# Information and Search System for a Tour Agency
 
-Проєкт, що поєднує базу даних та застосунок для роботи з нею. Система призначена для оптимізації роботи туристичної фірми шляхом забезпечення швидкого доступу до інформації, зручного пошуку даних, управління замовленнями та аналізу діяльності установи.
+A desktop application integrated with a relational database to optimize tour agency operations. The system ensures fast access to information, efficient data search, booking management, and business analytics.
 
-## Функціональні можливості:
+## Key Features
 
-- реєстрація та обробка замовлень;
-- ведення бази клієнтів (паспортні та контактні дані, історія замовлень);
-- облік менеджерів та розподіл замовлень між ними;
-- ведення каталогів турів (готель, тип туру, транспорт, тривалість, ціна);
-- формування та ведення рахунків, управління їх станом;
-- управління даними системи (створення, перегляд, редагування та видалення записів);
-- пошук та фільтрація даних для зручності перегляду;
-- генерація звітів за вибраний період по замовленнях, рахунках та діяльності менеджерів;
-- побудова стовпчастих діаграм для аналізу та візуалізації результатів.
+- Registration and processing of customer bookings.
+- Customer data management (passport data, contact details, booking history).
+- Management of tour agency managers and booking assignments.
+- Tour catalog management (hotels, tour types, transport, duration, pricing).
+- Invoice creation and management, including invoice status tracking.
+- CRUD operations for managing system records.
+- Data search and filtering for enhanced usability.
+- Report generation for selected time periods (bookings, invoices, manager performance).
+- Bar chart visualization for business activity analysis.
 
-## Використані технології
+## Tech Stack
 
-- **Мова програмування:** C# (.NET Framework, WinForms)
-- **СУБД:** Oracle Database
-- **PL/SQL:** розробка БД, послідовності, тригери, представлення та функції
+- **Programming Language:** C# (.NET Framework, WinForms)
+- **DBMS:** Oracle Database
+- **PL/SQL:** Database design, sequences, triggers, views, and stored functions
 - **IDE:** MS Visual Studio
-- **Додаткові інструменти:** RAD-система для швидкої розробки
 
-## Структура системи та база даних
+## System Architecture & Database
 
-#### Логічна структура
+#### Logical Architecture
 
-1. Клієнтський застосунок на C# підключається до Oracle DB.
-2. CRUD-операції виконуються через інтерфейс користувача.
-3. Генерація звітів та діаграм відбувається на основі даних БД.
+1. C# desktop client application connects directly to Oracle Database.
+2. CRUD operations are performed via the user interface.
+3. Reports and analytical charts are generated dynamically based on database queries.
 
-#### База даних
+#### Database Architecture
 
-База даних включає такі сутності:
+The database includes the following entities:
 
-| Сутність       | Призначення        |
-| -------------- | ------------------ |
-| `account`      | Рахунки клієнтів   |
-| `booking`      | Замовлення турів   |
-| `country`      | Країни             |
-| `city`         | Міста              |
-| `customer`     | Дані про клієнтів  |
-| `hotel`        | Готелі             |
-| `tour`         | Тур з деталями     |
-| `tour_manager` | Менеджери турфірми |
-| `tour_type`    | Типи турів         |
-| `transport`    | Типи транспорту    |
+| Entity         | Description            |
+| -------------- | ---------------------- |
+| `account`      | Customer invoices      |
+| `booking`      | Tour bookings          |
+| `country`      | Countries              |
+| `city`         | Cities                 |
+| `customer`     | Customer personal data |
+| `hotel`        | Hotels                 |
+| `tour`         | Tour details           |
+| `tour_manager` | Tour agency managers   |
+| `tour_type`    | Tour types             |
+| `transport`    | Transport types        |
 
-- **Тригери** та **послідовності** для автоматичного генерування ключів
-- **Представлення (VIEW)** для зручного доступу до агрегованих даних
-- **Індекси** для прискорення пошуку по ключових полях
+- **Triggers** and **sequences** are implemented for automated primary key generation.
+- **Views** are used for simplified access to aggregated data.
+- **Indexes** are configured to improve the performance of search queries.
 
-## Інтерфейс користувача
+## User Interface
 
-Ключові можливості системи показано на прикладі роботи із замовленнями: перегляд та управління записів, створення звітів для подальшого аналізу.  
+Key features are demonstrated through the booking management workflow: viewing and managing records, as well as generating reports for further analysis.  
 
-![Головне меню](demo/demo1.png)  
-***Головне меню***
+![Main Menu](demo/demo1.png)  
+***Main Menu***
 
-![Перегляд замовлень](demo/demo2.png)  
-***Перегляд замовлень***
+![View Bookings](demo/demo2.png)  
+***View Bookings***
 
-![Керування замовленнями](demo/demo3.png)  
-***Керування замовленнями: додавання, редагування, видалення***
+![Booking Management](demo/demo3.png)  
+***Booking Management: Add, Edit, Delete***
 
-![Перегляд звіту](demo/demo4.png)
-***Перегляд сформованого по замовленнях звіту***
+![Viewing the Report](demo/demo4.png)  
+***Viewing the Generated Booking Report***
 
-## Запуск проєкту
+## Getting Started
 
-1. Клонувати репозиторій:  
+1. Clone the repository:  
    `git clone https://github.com/opyvonos/tour-agency-app`
-2. Імпортувати SQL-скрипт в Oracle Database
-3. Відкрити рішення у Visual Studio
-4. Вказати параметри підключення до БД
-5. Запустити застосунок
+2. Import the SQL scripts from the `database` directory into the Oracle Database instance in the following order: `create_table`, `insert_data`, `sequences`, `triggers`, `views`, `indexes`.
+3. Open the .sln file in Visual Studio.
+4. In the `app.config` file, update the `connectionStrings` section by specifying Oracle Database credentials (DATA SOURCE, USER ID, PASSWORD).
+5. Build and launch the project from Visual Studio.
