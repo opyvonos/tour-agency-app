@@ -12,8 +12,9 @@ CREATE TABLE booking (
     customer_cust_id         INTEGER NOT NULL,
     tour_manager_manager_id  INTEGER NOT NULL,
     tour_tour_id             INTEGER NOT NULL,
+    additional_services      NVARCHAR2(1),
     booking_date             DATE,
-    booking_status           NVARCHAR2(20)
+    booking_status           NVARCHAR2(30)
 );
 
 ALTER TABLE booking ADD CONSTRAINT booking_pk PRIMARY KEY ( booking_id );
@@ -21,26 +22,26 @@ ALTER TABLE booking ADD CONSTRAINT booking_pk PRIMARY KEY ( booking_id );
 CREATE TABLE city (
     city_id             INTEGER NOT NULL,
     country_country_id  INTEGER NOT NULL,
-    city_name           NVARCHAR2(20)
+    city_name           NVARCHAR2(50)
 );
 
 ALTER TABLE city ADD CONSTRAINT city_pk PRIMARY KEY ( city_id );
 
 CREATE TABLE country (
     country_id    INTEGER NOT NULL,
-    country_name  NVARCHAR2(20)
+    country_name  NVARCHAR2(50)
 );
 
 ALTER TABLE country ADD CONSTRAINT country_pk PRIMARY KEY ( country_id );
 
 CREATE TABLE customer (
     cust_id          INTEGER NOT NULL,
-    first_name       NVARCHAR2(20),
-    last_name        NVARCHAR2(20),
+    first_name       NVARCHAR2(40),
+    last_name        NVARCHAR2(40),
     birthdate        DATE,
-    passport_number  NVARCHAR2(20),
-    address          NVARCHAR2(40),
-    phone_number     NVARCHAR2(20)
+    passport_number  NVARCHAR2(30),
+    address          NVARCHAR2(150),
+    phone_number     NVARCHAR2(25)
 );
 
 ALTER TABLE customer ADD CONSTRAINT customer_pk PRIMARY KEY ( cust_id );
@@ -48,8 +49,8 @@ ALTER TABLE customer ADD CONSTRAINT customer_pk PRIMARY KEY ( cust_id );
 CREATE TABLE hotel (
     hotel_id      INTEGER NOT NULL,
     city_city_id  INTEGER NOT NULL,
-    name          NVARCHAR2(20),
-    address       NVARCHAR2(40),
+    name          NVARCHAR2(100),
+    address       NVARCHAR2(150),
     rooms_count   INTEGER
 );
 
@@ -68,9 +69,9 @@ ALTER TABLE tour ADD CONSTRAINT tour_pk PRIMARY KEY ( tour_id );
 
 CREATE TABLE tour_manager (
     manager_id    INTEGER NOT NULL,
-    first_name    NVARCHAR2(20),
-    last_name     NVARCHAR2(20),
-    phone_number  NVARCHAR2(20),
+    first_name    NVARCHAR2(40),
+    last_name     NVARCHAR2(40),
+    phone_number  NVARCHAR2(25),
     hire_date     DATE,
     salary        NUMBER(7, 2)
 );
@@ -79,14 +80,14 @@ ALTER TABLE tour_manager ADD CONSTRAINT tour_manager_pk PRIMARY KEY ( manager_id
 
 CREATE TABLE tour_type (
     tour_type_id  INTEGER NOT NULL,
-    type_name     NVARCHAR2(20)
+    type_name     NVARCHAR2(40)
 );
 
 ALTER TABLE tour_type ADD CONSTRAINT tour_type_pk PRIMARY KEY ( tour_type_id );
 
 CREATE TABLE transport (
     transport_id    INTEGER NOT NULL,
-    transport_type  NVARCHAR2(20)
+    transport_type  NVARCHAR2(30)
 );
 
 ALTER TABLE transport ADD CONSTRAINT transport_pk PRIMARY KEY ( transport_id );
